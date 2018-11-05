@@ -46,80 +46,14 @@ namespace Tizen.Appium
                         _objectList.Remove(e.View);
                     }
                 };
-                _objectList.AddElement(e.View);
+                _objectList.Add(e.View);
 
                 if ((e.View is ListView) || (e.View is TableView))
                 {
                     AddItemFromList(e.View);
                 }
             };
-#if __UITEST__
-            Log.Debug(" *** message subscription enabled ***");
-            SubscribeInternalMessage();
-#endif
-            //_toolbarTracker.CollectionChanged += OnToolbarCollectionChanged;
         }
-
-#if __UITEST__
-        void SubscribeInternalMessage()
-        {
-            MessagingCenter.Subscribe<NDialog, NativeDialogArguments>(this, NDialog.ShowNativeDialog, ShowDialogHandler);
-            MessagingCenter.Subscribe<NavigationPageRenderer, UpdateToolbarArguments>(this, NavigationPageRenderer.ToolbarUpdate, UpdateToolbarHandler);
-        }
-
-        private void UpdateToolbarHandler(NavigationPageRenderer sender, UpdateToolbarArguments arg)
-        {
-            _objectList.ResetToolbarItems();
-            foreach (var obj in arg.Children)
-            {
-                _objectList.AddElement(obj);
-            }
-        }
-
-        private void ShowDialogHandler(NDialog sender, NativeDialogArguments arg)
-        {
-            _objectList.AddElement(arg.Dialog);
-
-            foreach (var obj in arg.Children)
-            {
-                _objectList.AddElement(obj);
-            }
-
-            sender.Dismissed += (s, e) =>
-            {
-                _objectList.Remove(arg.Dialog);
-
-                foreach (var obj in arg.Children)
-                {
-                    _objectList.Remove(obj);
-                }
-            };
-        }
-#endif
-
-        //void OnToolbarCollectionChanged(object sender, EventArgs eventArgs)
-        //{
-        //    _objectList.ResetToolbarItems();
-
-        //    var right = _toolbarTracker.ToolbarItems.Where(
-        //        i => i.Order <= ToolbarItemOrder.Primary)
-        //        .OrderBy(i => i.Priority).FirstOrDefault();
-
-        //    var left = _toolbarTracker.ToolbarItems.Where(
-        //        i => i.Order == ToolbarItemOrder.Secondary)
-        //        .OrderBy(i => i.Priority).FirstOrDefault();
-
-
-        //    if (right != null)
-        //    {
-        //        _objectList.AddToolbarItem(right, ToolbarItemPosition.Right);
-        //    }
-
-        //    if (left != null)
-        //    {
-        //        _objectList.AddToolbarItem(left, ToolbarItemPosition.Left);
-        //    }
-        //}
 
         void AddItemFromList(VisualElement list)
         {
@@ -128,7 +62,7 @@ namespace Tizen.Appium
             nativeView.ItemRealized += (s, e) =>
             {
                 var itemContext = (Xamarin.Forms.Platform.Tizen.Native.ListView.ItemContext)e.Item.Data;
-                _objectList.AddElement(itemContext);
+                _objectList.Add(itemContext);
 
                 itemContext.Cell.Disappearing += (sender, args) =>
                 {
