@@ -26,6 +26,16 @@ namespace Tizen.Appium
             }
         }
 
+        public void ResetToolbarItems()
+        {
+            var selected = _elementList.Where(kv => kv.Value.Element?.GetType() == typeof(Xamarin.Forms.Platform.Tizen.Native.ToolbarItemButton)).Select(kv => kv.Value.Id);
+
+            foreach (var id in selected.ToList())
+            {
+                RemoveById(id);
+            }
+        }
+
         public void Remove(object element)
         {
             string id = "";

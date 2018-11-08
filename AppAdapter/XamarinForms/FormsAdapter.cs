@@ -53,6 +53,43 @@ namespace Tizen.Appium
                     AddItemFromList(e.View);
                 }
             };
+            Log.Debug(" *** message subscription enabled ***");
+            SubscribeInternalMessage();
+        }
+
+        void SubscribeInternalMessage()
+        {
+            MessagingCenter.Subscribe<NDialog, NativeDialogArguments>(this, NDialog.ShowNativeDialog, ShowDialogHandler);
+            MessagingCenter.Subscribe<NavigationPageRenderer, UpdateToolbarArguments>(this, NavigationPageRenderer.ToolbarUpdate, UpdateToolbarHandler);
+        }
+
+        private void UpdateToolbarHandler(NavigationPageRenderer sender, UpdateToolbarArguments arg)
+        {
+            _objectList.ResetToolbarItems();
+            foreach (var obj in arg.Children)
+            {
+                _objectList.Add(obj);
+            }
+        }
+
+        private void ShowDialogHandler(NDialog sender, NativeDialogArguments arg)
+        {
+            _objectList.Add(arg.Dialog);
+
+            foreach (var obj in arg.Children)
+            {
+                _objectList.Add(obj);
+            }
+
+            sender.Dismissed += (s, e) =>
+            {
+                _objectList.Remove(arg.Dialog);
+
+                foreach (var obj in arg.Children)
+                {
+                    _objectList.Remove(obj);
+                }
+            };
         }
 
         void AddItemFromList(VisualElement list)
