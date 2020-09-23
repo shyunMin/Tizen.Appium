@@ -81,7 +81,7 @@ namespace Tizen.Appium
         {
             Log.Debug("InitCommands");
 
-            Assembly asm = typeof(Server).GetTypeInfo().Assembly;
+            Assembly asm = typeof(Server).Assembly;
             Type methodType = typeof(ICommand);
 
             var commands = from method in asm.GetTypes()

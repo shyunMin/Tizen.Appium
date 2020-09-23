@@ -1,5 +1,5 @@
 using System;
-using ElmSharp;
+using System.Collections.Generic;
 
 namespace Tizen.Appium
 {
@@ -20,6 +20,8 @@ namespace Tizen.Appium
         bool HasProperty(string propertyName);
 
         object GetPropertyValue(string propertyName);
+
+        IEnumerable<string> GetPropertyNames();
 
         bool SetPropertyValue(string propertyName, object value);
 

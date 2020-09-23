@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 
 namespace Tizen.Appium
 {
@@ -27,6 +28,37 @@ namespace Tizen.Appium
                 Id = id;
             }
         }
+
+        public class PropertyInfo
+        {
+            [JsonProperty("property")]
+            public string Name { get; set; }
+
+            public PropertyInfo(string name)
+            {
+                Name = name;
+            }
+        }
+
+        //public class PropertyInfo
+        //{
+        //    [JsonProperty("name")]
+        //    public string Name { get; set; }
+
+        //    [JsonProperty("value")]
+        //    public string Value { get; set; }
+
+        //    public PropertyInfo(string name, object value)
+        //    {
+        //        Name = name;
+        //        Value = (value != null) ? value.ToString() : "";
+        //    }
+
+        //    public override string ToString()
+        //    {
+        //        return "Name=" + Name + ", Value=" + Value;
+        //    }
+        //}
 
         public class Size
         {

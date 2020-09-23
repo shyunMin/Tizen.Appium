@@ -16,6 +16,8 @@ namespace Tizen.Appium
 
         IEnumerable<string> GetIdsByName(string name);
 
+        IEnumerable<string> GetAllElements();
+
         void Clear();
     }
 }
