@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using ElmSharp;
 
 namespace Tizen.Appium
@@ -36,6 +37,14 @@ namespace Tizen.Appium
             }
         }
 
+        public virtual Type Type
+        {
+            get
+            {
+                return Control?.GetType();
+            }
+        }
+
         public virtual bool HasProperty(string propertyName)
         {
             var property = Control?.GetType().GetProperty(propertyName);
@@ -54,15 +63,15 @@ namespace Tizen.Appium
             });
         }
 
-        public virtual IEnumerable<string> GetPropertyNames()
+        public virtual IEnumerable<PropertyInfo> GetAllProperties()
         {
-            return TizenAppium.RunOnMainThread<IEnumerable<string>>(() =>
+            return TizenAppium.RunOnMainThread<IEnumerable<PropertyInfo>>(() =>
             {
                 var props = Control?.GetType().GetProperties();
 
                 var filtered = from p in props
                                where p.GetCustomAttributes(typeof(EditorBrowsableAttribute), false).Length <= 0
-                               select p.Name;
+                               select p;
 
                 return filtered;
             });

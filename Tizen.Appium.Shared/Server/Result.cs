@@ -29,36 +29,56 @@ namespace Tizen.Appium
             }
         }
 
+        //public class PropertyInfo
+        //{
+        //    [JsonProperty("property")]
+        //    public string Name { get; set; }
+
+        //    public PropertyInfo(string name)
+        //    {
+        //        Name = name;
+        //    }
+        //}
+
+        public class ElementInfo
+        {
+            [JsonProperty("elementId")]
+            public string ElementId { get; set; }
+
+            [JsonProperty("type")]
+            public string Type { get; set; }
+
+            public ElementInfo(string id, Type type)
+            {
+                ElementId = id;
+                Type = type?.ToString() ?? "";
+            }
+
+            public override string ToString()
+            {
+                return "ElementId=" + ElementId + ", Type=" + Type;
+            }
+        }
+
         public class PropertyInfo
         {
             [JsonProperty("property")]
             public string Name { get; set; }
 
-            public PropertyInfo(string name)
+            [JsonProperty("value")]
+            public string Value { get; set; }
+
+            public PropertyInfo(string name, object value)
             {
                 Name = name;
+                Value = (value != null) ? value.ToString() : "";
+            }
+
+            public override string ToString()
+            {
+                return "Name=" + Name + ", Value=" + Value;
             }
         }
-
-        //public class PropertyInfo
-        //{
-        //    [JsonProperty("name")]
-        //    public string Name { get; set; }
-
-        //    [JsonProperty("value")]
-        //    public string Value { get; set; }
-
-        //    public PropertyInfo(string name, object value)
-        //    {
-        //        Name = name;
-        //        Value = (value != null) ? value.ToString() : "";
-        //    }
-
-        //    public override string ToString()
-        //    {
-        //        return "Name=" + Name + ", Value=" + Value;
-        //    }
-        //}
 
         public class Size
         {

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace Tizen.Appium
 {
@@ -15,13 +16,15 @@ namespace Tizen.Appium
 
         bool IsShown { get; }
 
+        Type Type { get; }
+
         event EventHandler Deleted;
 
         bool HasProperty(string propertyName);
 
         object GetPropertyValue(string propertyName);
 
-        IEnumerable<string> GetPropertyNames();
+        IEnumerable<PropertyInfo> GetAllProperties();
 
         bool SetPropertyValue(string propertyName, object value);
 

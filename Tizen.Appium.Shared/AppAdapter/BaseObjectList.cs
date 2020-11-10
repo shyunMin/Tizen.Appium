@@ -83,9 +83,9 @@ namespace Tizen.Appium
             return _list.FirstOrDefault(kv => kv.Value.EqualsTo(element)).Key;
         }
 
-        public IEnumerable<string> GetAllElements()
+        public IEnumerable<IObjectWrapper> GetAllElements()
         {
-            return _list.Where(kv => kv.Value.IsShown).Select(kv => kv.Key).ToList<string>();
+            return _list.Where(kv => kv.Value.IsShown).Select(kv => kv.Value);
         }
 
         public IEnumerable<string> GetIdsByName(string name)

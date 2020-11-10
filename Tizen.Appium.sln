@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2002
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30330.147
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tizen.Appium.Forms", "Tizen.Appium.Forms\Tizen.Appium.Forms.csproj", "{EBF606BF-76A1-4938-842C-C1929D811F1F}"
 EndProject
@@ -30,7 +30,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UITest", "test\UITest\UITes
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Tizen.Appium.Shared\Tizen.Appium.projitems*{9ad47168-6015-4b5b-b772-c4486fad5056}*SharedItemsImports = 5
 		Tizen.Appium.Shared\Tizen.Appium.projitems*{9cf5436f-ddd1-4bbb-a9d3-41b6646a44fc}*SharedItemsImports = 13
+		Tizen.Appium.Shared\Tizen.Appium.projitems*{ebf606bf-76a1-4938-842c-c1929d811f1f}*SharedItemsImports = 5
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

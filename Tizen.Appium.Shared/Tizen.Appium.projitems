@@ -22,7 +22,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Commands\FlickCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\GetAllElementsCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\GetAttributeCommand.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Commands\GetAttributeNamesCommand.cs" />
+    <Compile Include="..\Tizen.Appium.Shared\Commands\GetAllAttributesCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\GetDisplayedCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\GetEnabledCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\GetLocationCommand.cs" />

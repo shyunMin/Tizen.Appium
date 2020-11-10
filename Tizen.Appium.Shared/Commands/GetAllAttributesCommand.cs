@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace Tizen.Appium
 {
-    public class GetAttributeNamesCommand : ICommand
+    public class GetAllAttributesCommand : ICommand
     {
-        public string Command => Commands.GetAttributeNames;
+        public string Command => Commands.GetAllAttributes;
 
         public Result Run(Request req, IObjectList objectList, IInputGenerator inputGen)
         {
@@ -14,7 +14,7 @@ namespace Tizen.Appium
             var propertyName = req.Params.Attribute;
 
             var result = new Result();
-            var list =  objectList.Get(elementId)?.GetPropertyNames();
+            var list =  objectList.Get(elementId)?.GetAllProperties();
 
             result.Value = list;
             return result;

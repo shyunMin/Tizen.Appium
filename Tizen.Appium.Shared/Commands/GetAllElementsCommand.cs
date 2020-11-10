@@ -11,12 +11,12 @@ namespace Tizen.Appium
             Log.Debug("Run: GetAllElements");
 
             var result = new Result();
-            List<Result.Element> list = new List<Result.Element>();
-            var elementIds = objectList.GetAllElements();
+            List<Result.ElementInfo> list = new List<Result.ElementInfo>();
+            var elements = objectList.GetAllElements();
 
-            foreach (var id in elementIds)
+            foreach (var element in elements)
             {
-                list.Add(new Result.Element(id));
+                list.Add(new Result.ElementInfo(element.Id, element.Type));
             }
 
             result.Value = list;

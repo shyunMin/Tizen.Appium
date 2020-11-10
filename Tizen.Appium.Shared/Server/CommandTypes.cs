@@ -25,7 +25,7 @@ namespace Tizen.Appium
         public static readonly string ReleaseKey = "releaseKey";
 
         public static readonly string GetAllElements = "tizen:getAllElements";
-        public static readonly string GetAttributeNames = "tizen:getAttributeNames";
+        public static readonly string GetAllAttributes = "tizen:getAllAttributes";
     }
 }
 
